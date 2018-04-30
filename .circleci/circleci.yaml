@@ -1,0 +1,1 @@
+#nohup jre/bin/java -Dserver.host=0.0.0.0 -jar MarinaAbramovick-0.0.1-SNAPSHOT.jar > log.out 2>&1 &
