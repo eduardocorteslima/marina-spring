@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 
 @RestController
@@ -38,6 +39,7 @@ public class Endpoint {
 		System.out.println(message.toString() );
 		MessageResponse messageResponse = marina.exec(message.getText());
 		System.out.println(messageResponse.getClass());
+		this.fila.sendMessage(messageResponse);
 		return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
 	}
 	
