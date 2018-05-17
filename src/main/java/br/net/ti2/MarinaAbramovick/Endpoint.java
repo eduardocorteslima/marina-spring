@@ -36,10 +36,11 @@ public class Endpoint {
 	
 	@PostMapping("marina")
 	public ResponseEntity<?> getIntention(@RequestBody Message message) {
-		System.out.println(message.toString() );
+		
 		MessageResponse messageResponse = marina.exec(message.getText());
-		System.out.println(messageResponse.getClass());
+		
 		this.fila.sendMessage(messageResponse);
+		
 		return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
 	}
 	
