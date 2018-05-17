@@ -8,6 +8,7 @@ import com.ibm.watson.developer_cloud.conversation.v1.Conversation;
 import com.ibm.watson.developer_cloud.conversation.v1.model.InputData;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
+import com.ibm.watson.developer_cloud.conversation.v1.model.Context;
 
 @Service
 public class Marina {
@@ -17,6 +18,7 @@ public class Marina {
 	InputData input;
 	MessageOptions options;
 	MessageResponse response;
+	Context context;
 	
 	@Value("${app.WORKSPACE_ID}")
 	String WORKSPACE_ID;
@@ -37,14 +39,10 @@ public class Marina {
 	}*/
 	
 	public MessageResponse exec(String userText) {
-
 		input = new InputData.Builder(userText).build();
-
-		options = new MessageOptions.Builder(WORKSPACE_ID).input(input).build();
+		options = new MessageOptions.Builder(WORKSPACE_ID).input(input).context(context).build();
 		response = conversationService.message(options).execute();
-		System.out.println(response);
 		return response;
-
 	}
 
 }
