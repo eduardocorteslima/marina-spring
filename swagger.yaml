@@ -1,0 +1,90 @@
+swagger: "2.0"
+info:
+  description: "Este é um documento da api da Marina Chatterboter."
+  version: "0.1.0"
+  title: "Marina Chatterbotter"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "tiago@ti2.net.br"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "marinaapi.ti2.net.br"
+basePath: "/v1"
+tags:
+- name: "marina"
+  description: "Ponto principal de entrada"
+  externalDocs:
+    description: "os clientes não customizados utilizam este endpoint"
+    url: "http://marina.ti2.net.br/help"
+- name: "bob"
+  description: "Acesso dedicado ao Bob"
+- name: "user"
+  description: "Operações sosbre usuários"
+  externalDocs:
+    description: "Encontre mais informações sobre o projeto"
+    url: "http://marina.ti2.net.br/help/marina"
+schemes:
+- "https"
+- "http"
+
+
+paths:
+  /marina:
+    post:
+      tags:
+        - "marina"
+      summary: "Enviar uma requisição/conversa para Marina"
+      description: "Conversar com a Marina persiste em ser uma troca de texto ao qual contem perguntas e resposts de ambas aa partes"
+      operationId: "enviarMensagem"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Conteudo de pergunta/resposta para Marina"
+        required: true
+        schema:
+          $ref: "#/definitions/Message"
+      responses:
+        405:
+          description: "Invalid input"
+        201:
+          description: "Acesso com sucesso"
+          schema:
+            $ref: "#/definitions/MessageResponse"
+
+
+definitions:
+  Message:
+    type: "object"
+    title: "Mensagem"
+    description: "Mensagem usada para comunicar com a Marina"
+    properties:
+      text:
+        type: "string"
+        description: "conteudo da mensagem"
+      dialogId:
+        type: "integer"
+        format: "int64"
+  MessageResponse:
+    type: "object"
+    title: "Mensagem Resposta"
+    description: "Mensagem de retorna da Marina"
+    properties:
+      textResponse:
+        type: "string"
+        description: "conteudo da resposta"
+      dialogId:
+        type: "integer"
+        format: "int64"
+      requestResponse:
+        type: "boolean"
+
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
+        
