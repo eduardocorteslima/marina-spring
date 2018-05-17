@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.Conversation;
+import com.ibm.watson.developer_cloud.conversation.v1.model.Context;
 
 @Configuration
 public class Config {
@@ -31,4 +32,10 @@ public class Config {
 	public SendMessageRequest messageRequest() {
 		return new SendMessageRequest();
 	}
+	
+	@Bean
+	public Context context() {
+		return new Context();
+	}
+	
 }
