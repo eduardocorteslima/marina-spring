@@ -45,4 +45,11 @@ public class Marina {
 		return response;
 	}
 
+	public MessageResponse exec(String text, Context context2) {
+			input = new InputData.Builder(text).build();
+			options = new MessageOptions.Builder(WORKSPACE_ID).input(input).context(context2).build();
+			response = conversationService.message(options).execute();
+			return response;
+	}
+
 }

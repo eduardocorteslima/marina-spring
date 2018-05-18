@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.watson.developer_cloud.conversation.v1.model.Context;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 
 @RestController
@@ -37,9 +38,10 @@ public class Endpoint {
 	@PostMapping("marina")
 	public ResponseEntity<?> getIntention(@RequestBody Message message) {
 		
-		MessageResponse messageResponse = marina.exec(message.getText());
+		MessageResponse messageResponse = marina.exec(message.getText(),message.getContext());
 		
 		this.fila.sendMessage(messageResponse);
+		
 		
 		return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
 	}
@@ -67,6 +69,8 @@ public class Endpoint {
 class Message{
 	private String userName;
 	private String text;
+	@Autowired
+	private Context context;
 
 	public String getUserName() {
 		return userName;
@@ -84,6 +88,12 @@ class Message{
 	@Override
 	public String toString() {
 		return "Message [userName=" + userName + ", text=" + text + "]";
+	}
+	public Context getContext() {
+		return context;
+	}
+	public void setContext(Context context) {
+		this.context = context;
 	}
 	
 	
