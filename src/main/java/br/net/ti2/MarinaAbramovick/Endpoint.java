@@ -55,6 +55,11 @@ public class Endpoint {
 		return new ResponseEntity<String>("sqs ok", HttpStatus.OK);
 	}
 	
+	@GetMapping("question-is-whats-is-a-mahna-mahna-the")
+	public ResponseEntity<?> questionIsWhatsIsAMahnaMahnaThe(){
+		return new ResponseEntity<String>("Question is who care?", HttpStatus.OK);
+	}
+	
 	/*public ResponseEntity<?> getIntention(@RequestBody Texto userText) {
 		System.out.println(userText);
 		MessageResponse r = marina.exec(userText.getUserText());
