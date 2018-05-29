@@ -7,3 +7,12 @@ app:
   WORKSPACE_ID: ${WATSON_CONVERSATION_WORKSPACE_ID:none}
   WATSON_USERNAME: ${WATSON_CONVERSATION_USERNAME:none}
   WATSON_PASSWORD: ${WATSON_CONVERSATION_PASSWORD:none}
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: ${HIBERNATE_DDL}
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
