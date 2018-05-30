@@ -21,11 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.httpBasic();
 	}
 	
-	@Autowired
+	@Autowired //Este é o cara que autoriza a requisição
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 		auth.inMemoryAuthentication()
-		.withUser("tiago").password("123").roles("USER")
-		.and()
-		.withUser("quel").password("234").roles("USER", "ADMIN");
+			.withUser("tiago").password("{noop}123321").roles("USER")
+			.and()
+			.withUser("quel").password("{noop}123123").roles("USER", "ADMIN");
 	}
 }
