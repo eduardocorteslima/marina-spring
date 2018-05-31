@@ -6,9 +6,6 @@ services:
     restart: always
     environment:
     - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    # env_file:
-    #   - ./.env
-
 
 networks:
   default:
