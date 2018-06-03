@@ -1,4 +1,4 @@
-package br.net.ti2.MarinaAbramovick;
+package br.net.ti2.MarinaAbramovick.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,16 +27,6 @@ public class Marina {
 
 	public Marina() {
 	}
-
-	/*public void exec() {
-
-		input = new InputData.Builder("o Neto corrigiu as provas?").build();
-
-		options = new MessageOptions.Builder(c).input(input).build();
-		response = conversationService.message(options).execute();
-		System.out.println(response);
-
-	}*/
 	
 	public MessageResponse exec(String userText) {
 		input = new InputData.Builder(userText).build();

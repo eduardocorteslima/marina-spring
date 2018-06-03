@@ -1,4 +1,4 @@
-package br.net.ti2.MarinaAbramovick;
+package br.net.ti2.MarinaAbramovick.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
