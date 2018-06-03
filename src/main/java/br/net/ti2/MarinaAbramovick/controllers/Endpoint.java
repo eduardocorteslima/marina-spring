@@ -1,4 +1,4 @@
-package br.net.ti2.MarinaAbramovick;
+package br.net.ti2.MarinaAbramovick.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
+
+import br.net.ti2.MarinaAbramovick.service.Fila;
+import br.net.ti2.MarinaAbramovick.service.Marina;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -25,14 +28,6 @@ public class Endpoint {
 		this.marina = m;
 		this.fila = f;
 	}
-
-	/*
-	 * @PostMapping public String getIntention(@RequestBody String userText){
-	 * System.out.println(userText);
-	 * 
-	 * return userText; }
-	 */
-
 	
 	@PostMapping("marina")
 	public ResponseEntity<?> getIntention(@RequestBody Message message) {
@@ -49,23 +44,11 @@ public class Endpoint {
 	public ResponseEntity<?> ping() {
 		return new ResponseEntity<>("pong",HttpStatus.OK);
 	}
-	
-	@GetMapping("sql")
-	public ResponseEntity<?> sendMessageToSqs(){
-		return new ResponseEntity<String>("sqs ok", HttpStatus.OK);
-	}
-	
+
 	@GetMapping("question-is-whats-is-a-mahna-mahna-the")
 	public ResponseEntity<?> questionIsWhatsIsAMahnaMahnaThe(){
 		return new ResponseEntity<String>("Question is who care?", HttpStatus.OK);
 	}
-	
-	/*public ResponseEntity<?> getIntention(@RequestBody Texto userText) {
-		System.out.println(userText);
-		MessageResponse r = marina.exec(userText.getUserText());
-		System.out.println(r.getClass());
-		return new ResponseEntity<MessageResponse>(r, HttpStatus.OK);
-	}*/
 
 }
 
