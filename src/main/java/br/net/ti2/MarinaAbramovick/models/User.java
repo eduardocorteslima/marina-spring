@@ -4,12 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.Column;
 
 
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+@Table(name = "users")
 public class User  {
 	private static final long serialVersionUID = 1L;
 
@@ -32,66 +37,77 @@ public class User  {
     @NotEmpty
     private String password;
     
-    @NotEmpty
     private boolean admin;
-    
     
 
 	public Integer getId() {
 		return id;
 	}
 
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public String getRa() {
 		return ra;
 	}
 
+
 	public void setRa(String ra) {
 		this.ra = ra;
 	}
+
 
 	public String getUsername() {
 		return username;
 	}
 
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
 	public void setPassword(String password) {
+		/*BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		password = passwordEncoder.encode(password);*/
 		this.password = password;
 	}
+
 
 	public boolean isAdmin() {
 		return admin;
 	}
 
+
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-
-	
 }
