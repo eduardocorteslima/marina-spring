@@ -1,4 +1,4 @@
-package br.net.ti2.MarinaAbramovick;
+package br.net.ti2.MarinaAbramovick.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
