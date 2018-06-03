@@ -32,18 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
          .addFilter(new JWTAuthorizationFilter(authenticationManager(), customUserDetailService));
 	}
 
-	/*@Override
-	protected void configure(HttpSecurity http) throws Exception{
-		http
-		.authorizeRequests()
-		.anyRequest()
-		.authenticated()
-		.and()
-		.httpBasic().and()
-		.csrf().disable();
-	}*/
 	
-	@Autowired //Este é o cara que autoriza a requisição
+	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(customUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
 	}
