@@ -12,6 +12,8 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.Context;
 @Configuration
 public class Config {
 	
+	private static final String DATE_LOG = "2018-02-16";
+	
 	@Value("${app.WATSON_USERNAME}")
 	String WATSON_USERNAME;
 
@@ -20,7 +22,7 @@ public class Config {
 	
 	@Bean
 	public Conversation conversation() {
-		return  new Conversation("2018-02-16",WATSON_USERNAME,WATSON_PASSWORD);
+		return  new Conversation(DATE_LOG, WATSON_USERNAME, WATSON_PASSWORD);
 	}
 	
 	@Bean
